@@ -32,6 +32,23 @@ Book.prototype.display = function() {
   libDiv.appendChild(bookDiv)
 }
 
+// Ajout d'un livre à l'Array de livres
+Book.prototype.add = function() {
+  myLibrary.push(this)
+}
+
 // Livre de test
-const fakeBook = new Book("fakeBook", "Mathieu", 243, false)
-fakeBook.display()
+const fakeBook = new Book("Fake Book", "Mark Zuckerberg", 243, false)
+fakeBook.add()
+const anotherBook = new Book("Lord of the Ring", "JRR Tolkien", 314, false)
+anotherBook.add()
+const thirdBook = new Book("Les Piliers de la Terre", "Ken Follett", 900, true)
+thirdBook.add()
+
+// Affichage des livres de la library
+myLibrary.forEach(function(book) {
+  book.display()
+})
+
+
+// console.log(myLibrary)
