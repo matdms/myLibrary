@@ -7,3 +7,11 @@
 .bookDiv {
   margin: 10px;
 }
+
+.bookTitle {
+  font-weight: bold;
+}
+
+.bookRead {
+  font-style: italic;
+}

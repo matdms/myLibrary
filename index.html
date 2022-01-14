@@ -10,8 +10,18 @@
 <body>
   <h1>my Library</h1>
 
-  <div class="library" id="theLibrary">
+  <form method="GET" action="" onsubmit="return validateForm()">
+    <!-- Formulaire de création de livres par l'utilisateur -->
+    <h4>Ajouter un livre</h4>
+    Titre: <input type="text" name="title" id="title"><br />
+    Auteur: <input type="text" name="author" id="author"><br />
+    <input type="radio" name="lu" id="lu" value="Lu" checked>Lu
+    <input type="radio" name="lu" id="nonLu" value="nonLu">Non lu<br />
+    <button type="submit">Submit</button>
+  </form>
 
+  <div class="library" id="theLibrary">
+    <!-- le script ajoutera les livres ici -->
   </div>
 
   <script src="script.js"></script>

@@ -1,11 +1,11 @@
 
-let myLibrary = []
+// Array de stockage des livres
+  let myLibrary = []
 
 // Constructeur de Book
-function Book(title, author, pages, isRead) {
+function Book(title, author, isRead) {
   this.title = title
   this.author = author
-  this.pages = pages
   this.isRead = isRead
 }
 
@@ -32,23 +32,38 @@ Book.prototype.display = function() {
   libDiv.appendChild(bookDiv)
 }
 
-// Ajout d'un livre à l'Array de livres
+// Ajout d'un livre à l'Array myLibrary
 Book.prototype.add = function() {
   myLibrary.push(this)
 }
 
+function validateForm() {
+  event.preventDefault()
+  const titleField = document.getElementById('title')
+  const title = titleField.value
+  const authorField = document.getElementById('author')
+  const author = authorField.value
+  const isRead = true // A CORRIGER
+  const newBook = new Book(title, author, isRead)
+  newBook.add()
+  console.log(myLibrary)
+  updateLibrary()
+}
+
 // Livre de test
-const fakeBook = new Book("Fake Book", "Mark Zuckerberg", 243, false)
-fakeBook.add()
-const anotherBook = new Book("Lord of the Ring", "JRR Tolkien", 314, false)
+
+const anotherBook = new Book("Lord of the Ring", "JRR Tolkien", false)
 anotherBook.add()
-const thirdBook = new Book("Les Piliers de la Terre", "Ken Follett", 900, true)
+const thirdBook = new Book("Les Piliers de la Terre", "Ken Follett", true)
 thirdBook.add()
 
 // Affichage des livres de la library
-myLibrary.forEach(function(book) {
-  book.display()
-})
+function updateLibrary() {
+  const libDiv = document.getElementById('theLibrary')
+  libDiv.innerHTML = ""
+  myLibrary.forEach(function(book) {
+    book.display()
+  })
+}
 
-
-// console.log(myLibrary)
+updateLibrary()
