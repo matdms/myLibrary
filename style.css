@@ -24,7 +24,7 @@ body {
 .bookDiv {
   margin: 10px;
   padding: 15px;
-  height: 180px;
+  height: 200px;
   width: 160px;
   background: #FFFFFF;
   overflow: hidden;
@@ -52,4 +52,8 @@ body {
 .bookRead {
   font-style: italic;
   padding: 10px;
+}
+
+.bookButton {
+  margin: 5px;
 }

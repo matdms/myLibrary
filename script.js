@@ -22,6 +22,7 @@ Book.prototype.display = function() {
   bookRead.className = "bookRead"
 
   const toggle = document.createElement('input')
+  toggle.className = "bookButton"
   toggle.type = 'button'
   toggle.value = "Toggle read"
   toggle.onclick = (e) => {
@@ -30,6 +31,7 @@ Book.prototype.display = function() {
   }
 
   const remove = document.createElement('input')
+  remove.className = "bookButton"
   remove.type = 'button'
   remove.value = "Remove book"
   remove.onclick = (e) => {
@@ -58,6 +60,12 @@ Book.prototype.add = function() {
 // Suppression d'un livre
 Book.prototype.remove = function() {
   console.log('livre supprimé')
+  for( let i = 0; i < myLibrary.length; i++){ 
+    if ( myLibrary[i]['title'] === this.title && myLibrary[i]['author'] === this.author ) { 
+        myLibrary.splice(i, 1); 
+    }
+  }
+  updateLibrary()
 }
 
 // Bascule lu / non lu sur un livre
