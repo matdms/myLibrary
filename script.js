@@ -39,11 +39,11 @@ Book.prototype.add = function() {
 
 function validateForm() {
   event.preventDefault()
-  const titleField = document.getElementById('title')
-  const title = titleField.value
-  const authorField = document.getElementById('author')
-  const author = authorField.value
-  const isRead = true // A CORRIGER
+  const title = document.getElementById('title').value
+  const author = document.getElementById('author').value
+  const isReadVal = document.querySelector('input[name="lu"]:checked').value
+  const isRead = (isReadVal == 1 ? true : false)
+  console.log(isRead)
   const newBook = new Book(title, author, isRead)
   newBook.add()
   console.log(myLibrary)

@@ -30,6 +30,7 @@ body {
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 5px 5px 10px 2px silver;
+  text-align: center;
 }
 
 .bookDiv:hover{
@@ -41,6 +42,11 @@ body {
 
 .bookTitle {
   font-weight: bold;
+  padding: 10px;
+}
+
+.bookAuthor {
+  padding: 5px;
 }
 
 .bookRead {
