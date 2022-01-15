@@ -1,11 +1,42 @@
+body {
+  background: #E7F3F1;
+  font-family: 'Roboto', sans-serif;
+}
 
 .library {
   display: flex;
   margin: 10px;
 }
 
+.addBookForm {
+  background-color: #FFFFFF;
+  margin: 10px;
+  padding: 20px;
+  border-color: silver;
+  border-radius: 15px;
+  width: 250px;
+}
+
+.addBookForm h4 {
+  margin-top: 0;
+}
+
 .bookDiv {
   margin: 10px;
+  padding: 15px;
+  height: 120px;
+  width: 150px;
+  background: #FFFFFF;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 2px silver;
+}
+
+.bookDiv:hover{
+  background: #753BBD;
+  color: #FFFFFF;
+  transform: scale(1.05);
+  
 }
 
 .bookTitle {

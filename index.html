@@ -4,17 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>myLibrary</title>
 </head>
 <body>
   <h1>my Library</h1>
 
-  <form method="GET" action="" onsubmit="return validateForm()">
-    <!-- Formulaire de création de livres par l'utilisateur -->
+
+  <!-- Formulaire de création de livres par l'utilisateur -->
+    <form method="GET" action="" onsubmit="return validateForm()" class="addBookForm">
     <h4>Ajouter un livre</h4>
-    Titre: <input type="text" name="title" id="title"><br />
-    Auteur: <input type="text" name="author" id="author"><br />
+    Titre &nbsp&nbsp&nbsp<input type="text" name="title" id="title"><br />
+    Auteur <input type="text" name="author" id="author"><br />
     <input type="radio" name="lu" id="lu" value="Lu" checked>Lu
     <input type="radio" name="lu" id="nonLu" value="nonLu">Non lu<br />
     <button type="submit">Submit</button>
