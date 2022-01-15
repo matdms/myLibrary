@@ -21,6 +21,22 @@ Book.prototype.display = function() {
   const bookRead = document.createElement('div')
   bookRead.className = "bookRead"
 
+  const toggle = document.createElement('input')
+  toggle.type = 'button'
+  toggle.value = "Toggle read"
+  toggle.onclick = (e) => {
+    this.toogleRead()
+    updateLibrary()
+  }
+
+  const remove = document.createElement('input')
+  remove.type = 'button'
+  remove.value = "Remove book"
+  remove.onclick = (e) => {
+    this.remove()
+    updateLibrary()
+  }
+
   bookTitle.textContent = this.title
   bookAuthor.textContent = this.author
   bookRead.textContent = (this.isRead ? "lu" : "non lu")
@@ -28,6 +44,8 @@ Book.prototype.display = function() {
   bookDiv.appendChild(bookTitle)
   bookDiv.appendChild(bookAuthor)
   bookDiv.appendChild(bookRead)
+  bookDiv.appendChild(toggle)
+  bookDiv.appendChild(remove)
 
   libDiv.appendChild(bookDiv)
 }
@@ -37,16 +55,25 @@ Book.prototype.add = function() {
   myLibrary.push(this)
 }
 
+// Suppression d'un livre
+Book.prototype.remove = function() {
+  console.log('livre supprimé')
+}
+
+// Bascule lu / non lu sur un livre
+Book.prototype.toogleRead = function() {
+  this.isRead = (this.isRead ? false : true)
+}
+
 function validateForm() {
   event.preventDefault()
   const title = document.getElementById('title').value
   const author = document.getElementById('author').value
   const isReadVal = document.querySelector('input[name="lu"]:checked').value
   const isRead = (isReadVal == 1 ? true : false)
-  console.log(isRead)
   const newBook = new Book(title, author, isRead)
   newBook.add()
-  console.log(myLibrary)
+  // console.log(myLibrary)
   updateLibrary()
 }
 
@@ -64,6 +91,7 @@ function updateLibrary() {
   myLibrary.forEach(function(book) {
     book.display()
   })
+  console.log(myLibrary)
 }
 
 updateLibrary()
