@@ -1,77 +1,81 @@
 
 // Array de stockage des livres
-  let myLibrary = []
+let myLibrary = []
 
-// Constructeur de Book
-function Book(title, author, isRead) {
-  this.title = title
-  this.author = author
-  this.isRead = isRead
-}
+class Book {
 
-// Méthode d'affichage d'un livre (sortie du constructeur)
-Book.prototype.display = function() {
-  const libDiv = document.getElementById('theLibrary')
-  const bookDiv = document.createElement('div')
-  bookDiv.className = "bookDiv"  
-  const bookTitle = document.createElement('div')
-  bookTitle.className = "bookTitle"
-  const bookAuthor = document.createElement('div')
-  bookAuthor.className = "bookAuthor"
-  const bookRead = document.createElement('div')
-  bookRead.className = "bookRead"
-
-  const toggle = document.createElement('input')
-  toggle.className = "bookButton"
-  toggle.type = 'button'
-  toggle.value = "Toggle read"
-  toggle.onclick = (e) => {
-    this.toogleRead()
-    updateLibrary()
+  constructor(title, author, isRead) {
+    this.title = title
+    this.author = author
+    this.isRead = isRead
   }
 
-  const remove = document.createElement('input')
-  remove.className = "bookButton"
-  remove.type = 'button'
-  remove.value = "Remove book"
-  remove.onclick = (e) => {
-    this.remove()
-    updateLibrary()
-  }
+  // afficher un livre
+  display() {
+    const libDiv = document.getElementById('theLibrary')
+    const bookDiv = document.createElement('div')
+    bookDiv.className = "bookDiv"  
+    const bookTitle = document.createElement('div')
+    bookTitle.className = "bookTitle"
+    const bookAuthor = document.createElement('div')
+    bookAuthor.className = "bookAuthor"
+    const bookRead = document.createElement('div')
+    bookRead.className = "bookRead"
 
-  bookTitle.textContent = this.title
-  bookAuthor.textContent = this.author
-  bookRead.textContent = (this.isRead ? "lu" : "non lu")
-
-  bookDiv.appendChild(bookTitle)
-  bookDiv.appendChild(bookAuthor)
-  bookDiv.appendChild(bookRead)
-  bookDiv.appendChild(toggle)
-  bookDiv.appendChild(remove)
-
-  libDiv.appendChild(bookDiv)
-}
-
-// Ajout d'un livre à l'Array myLibrary
-Book.prototype.add = function() {
-  myLibrary.push(this)
-}
-
-// Suppression d'un livre
-Book.prototype.remove = function() {
-  console.log('livre supprimé')
-  for( let i = 0; i < myLibrary.length; i++){ 
-    if ( myLibrary[i]['title'] === this.title && myLibrary[i]['author'] === this.author ) { 
-        myLibrary.splice(i, 1); 
+    const toggle = document.createElement('input')
+    toggle.className = "bookButton"
+    toggle.type = 'button'
+    toggle.value = "Toggle read"
+    toggle.onclick = (e) => {
+      this.toggleRead()
+      updateLibrary()
     }
+
+    const remove = document.createElement('input')
+    remove.className = "bookButton"
+    remove.type = 'button'
+    remove.value = "Remove book"
+    remove.onclick = (e) => {
+      this.remove()
+      updateLibrary()
+    }
+
+    bookTitle.textContent = this.title
+    bookAuthor.textContent = this.author
+    bookRead.textContent = (this.isRead ? "lu" : "non lu")
+
+    bookDiv.appendChild(bookTitle)
+    bookDiv.appendChild(bookAuthor)
+    bookDiv.appendChild(bookRead)
+    bookDiv.appendChild(toggle)
+    bookDiv.appendChild(remove)
+
+    libDiv.appendChild(bookDiv)
+
   }
-  updateLibrary()
+
+  // ajouter un livre
+  add() {
+    myLibrary.push(this)
+  }
+
+  // supprimer un livre
+  remove() {
+    console.log('livre supprimé')
+    for( let i = 0; i < myLibrary.length; i++){ 
+      if ( myLibrary[i]['title'] === this.title && myLibrary[i]['author'] === this.author ) { 
+          myLibrary.splice(i, 1); 
+      }
+    }
+    updateLibrary()
+  }
+
+  // Bascule lu / non lu
+  toggleRead() {
+    this.isRead = ( this.isRead ? false : true )
+  }
 }
 
-// Bascule lu / non lu sur un livre
-Book.prototype.toogleRead = function() {
-  this.isRead = (this.isRead ? false : true)
-}
 
 function validateForm() {
   event.preventDefault()
